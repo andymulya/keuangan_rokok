@@ -9,14 +9,17 @@ class Role extends \Spatie\Permission\Models\Role
 {
     use HasFactory;
 
-    const ADMIN = "Administrator";
-    const GUEST = "Guest";
+    const ADMIN = "Admin";
+    const OPERATOR = "Operator";
+
+    const ADMIN_STOK = "Admin Stok";
 
     public static function getDefaultRoles()
     {
         return [
             self::ADMIN,
-            self::GUEST,
+            self::OPERATOR,
+            self::ADMIN_STOK
         ];
     }
 

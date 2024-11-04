@@ -18,17 +18,17 @@ class InformationSeeder extends Seeder
             [
                 'name' => 'Tempat Lahir',
                 'type' => 'text',
-                'role_name' => [Role::ADMIN, Role::GUEST]
+                'role_name' => [Role::ADMIN, Role::OPERATOR]
             ],
             [
                 'name' => 'Tanggal Lahir',
                 'type' => 'date',
-                'role_name' => [Role::ADMIN, Role::GUEST]
+                'role_name' => [Role::ADMIN, Role::OPERATOR]
             ],
             [
                 'name' => 'Nomor Telepon',
                 'type' => 'phone',
-                'role_name' => [Role::ADMIN, Role::GUEST]
+                'role_name' => [Role::ADMIN, Role::OPERATOR]
             ],
         ];
 
