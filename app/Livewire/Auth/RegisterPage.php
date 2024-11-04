@@ -13,7 +13,7 @@ class RegisterPage extends Component
     #[Layout("components.layouts.guest")]
     public function render()
     {
-        return view('livewire.auth.register-page');
+        return view('auth.register-page');
     }
 
     public function register()

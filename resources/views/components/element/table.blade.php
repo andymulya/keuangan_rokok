@@ -70,14 +70,14 @@
             text: $event.detail.message,
             showCancelButton: true,
             customClass: {
-                popup: 'dark:bg-gray-800 bg-gray-300 text-gray-800 dark:text-gray-300'
+                popup: 'bg-gray-300 text-gray-800'
             }
         }).then((e) => {e.isConfirmed && $wire[$event.detail.dispatch]($event.detail.id)})" @endif>
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <table class="min-w-full text-sm font-light text-left">
-                        <thead class="font-bold border-t-2 border-b-2 border-gray-200 dark:border-gray-400">
+                        <thead class="font-bold border-t-2 border-b-2 border-gray-200">
                             <tr>
                                 <th scope="col" class="px-6 py-4">#</th>
                                 @foreach ($cols as $col)
@@ -92,11 +92,11 @@
                                                         @if ($sort_direction == 'asc')
                                                             <x-heroicon-s-chevron-up width="16" />
                                                             <x-heroicon-s-chevron-down
-                                                                class="text-gray-200 dark:text-gray-600"
+                                                                class="text-gray-200"
                                                                 width="16" />
                                                         @elseif($sort_direction == 'desc')
                                                             <x-heroicon-s-chevron-up
-                                                                class="text-gray-200 dark:text-gray-600"
+                                                                class="text-gray-200"
                                                                 width="16" />
                                                             <x-heroicon-s-chevron-down width="16" />
                                                         @endif
@@ -114,7 +114,7 @@
                         </thead>
                         <tbody>
                             @foreach ($rows as $key => $row)
-                                <tr class="border-b dark:border-neutral-500" wire:key="{{ $key }}">
+                                <tr class="border-b" wire:key="{{ $key }}">
                                     <td class="px-6 py-4 font-medium whitespace-nowrap">
                                         @if ($rows instanceof \Illuminate\Pagination\LengthAwarePaginator)
                                             {{ ($rows->currentPage() - 1) * $rows->perpage() + $loop->iteration }}
@@ -160,7 +160,7 @@
                                                 @if (isset($modals['edit']))
                                                     <x-element.button.flat wire:offline.attr="disabled"
                                                         wire:loading.attr="disabled"
-                                                        class="p-1 bg-blue-600 rounded-none disabled:bg-blue-400"
+                                                        class="p-1 bg-blue-600 rounded-none disabled:bg-blue-400 text-white"
                                                         wire:click="$dispatch('modal:{{ $modals['edit'] }}:load', {id: {{ $row['id'] }}})">
                                                         <x-heroicon-s-pencil width="16"
                                                             class="pointer-events-none" />
@@ -182,7 +182,7 @@
                                             @if (isset($permissions['delete']) && $permissions['delete'])
                                                 <x-element.button.flat wire:offline.attr="disabled"
                                                     x-on:click="$dispatch('ask', {message: 'Are You Sure want to delete {{ $row['name'] }}?', dispatch: 'delete', id: {{ $row['id'] }} })"
-                                                    class="p-1 bg-red-700 rounded-none disabled:bg-red-500">
+                                                    class="p-1 bg-red-700 rounded-none disabled:bg-red-500 text-white">
                                                     <x-heroicon-s-trash width="16" class="pointer-events-none" />
                                                 </x-element.button.flat>
                                             @endif
@@ -191,7 +191,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot class="font-bold border-t-2 border-b-2 border-gray-200 dark:border-gray-400">
+                        <tfoot class="font-bold border-t-2 border-b-2 border-gray-200">
                             <tr>
                                 <th scope="col" class="px-6 py-4">#</th>
                                 @foreach ($cols as $col)
@@ -206,11 +206,11 @@
                                                         @if ($sort_direction == 'asc')
                                                             <x-heroicon-s-chevron-up width="16" />
                                                             <x-heroicon-s-chevron-down
-                                                                class="text-gray-200 dark:text-gray-600"
+                                                                class="text-gray-200"
                                                                 width="16" />
                                                         @elseif($sort_direction == 'desc')
                                                             <x-heroicon-s-chevron-up
-                                                                class="text-gray-200 dark:text-gray-600"
+                                                                class="text-gray-200"
                                                                 width="16" />
                                                             <x-heroicon-s-chevron-down width="16" />
                                                         @endif

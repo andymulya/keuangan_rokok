@@ -41,6 +41,6 @@ class RegisterForm extends Form
 
         auth()->login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/dashboard');
     }
 }

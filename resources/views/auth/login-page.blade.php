@@ -8,10 +8,6 @@
         <x-element.input.line type="password" wire:model="form.password" />
     </x-element.layout.vertical>
 
-    <!-- Remember Me -->
-    <div class="block mt-4">
-        <x-element.select.checkbox wire:model="form.remember" label="Remember Me" />
-    </div>
 
     <div class="flex items-center justify-end mt-4">
         @if (Route::has('password.request'))
@@ -19,6 +15,10 @@
                 {{ __('Forgot your password?') }}
             </x-element.anchor>
         @endif
+
+        {{-- <x-element.anchor :href="route('register')" class="ml-3">
+            {{ __('Register') }}
+        </x-element.anchor> --}}
 
         <x-element.button.primary class="ml-3">
             {{ __('Log in') }}

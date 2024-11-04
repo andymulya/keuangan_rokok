@@ -7,10 +7,10 @@
     <x-element.layout.vertical name="form.email" label="Email">
         <x-element.input.line type="email" wire:model="form.email" />
     </x-element.layout.vertical>
-    <x-element.layout.vertical name="form.password" label="Email">
+    <x-element.layout.vertical name="form.password" label="Password">
         <x-element.input.line type="password" wire:model="form.password" />
     </x-element.layout.vertical>
-    <x-element.layout.vertical name="form.password_confirmation" label="Email">
+    <x-element.layout.vertical name="form.password_confirmation" label="Password Confirmation">
         <x-element.input.line type="password" wire:model="form.password_confirmation" />
     </x-element.layout.vertical>
 

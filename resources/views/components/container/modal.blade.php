@@ -20,10 +20,10 @@
     x-on:open-modal.window="($event.detail.id && name === $event.detail.name) ? $wire.load($event.detail.id) : visible = (name === $event.detail.name)"
     x-on:close-modal.window="(name === $event.detail.name) ? $wire.clear() : $event.preventDefault()" x-transition
     x-show="visible" x-cloak>
-    <div wire:loading.class="pointer-events-none" class="fixed inset-0 bg-gray-100 dark:bg-gray-800 opacity-80"
+    <div wire:loading.class="pointer-events-none" class="fixed inset-0 bg-gray-100 opacity-80"
         x-on:click="$dispatch('close-modal', {name: name})"></div>
     <div
-        class="{{ $maxWidth }} bg-white max-h-[34rem] dark:bg-gray-700 z-30 dark:text-white rounded text-black relative">
+        class="{{ $maxWidth }} bg-white max-h-[34rem] rounded text-black relative">
         @if (isset($method))
             <form wire:submit="{{ $method }}">
         @endif

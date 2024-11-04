@@ -13,7 +13,7 @@ class LoginPage extends Component
     #[Layout("components.layouts.guest")]
     public function render()
     {
-        return view("livewire.auth.login-page");
+        return view(view: "auth.login-page");
     }
 
     public function send()
