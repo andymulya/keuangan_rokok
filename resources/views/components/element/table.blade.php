@@ -13,7 +13,7 @@
 
 <div class="block">
     <div class="flex flex-row justify-between">
-        <div>
+        {{-- <div>
             @if ($perPage != '')
                 <x-element.select.dropdown wire:model.live='{{ $perPage }}'>
                     <option>5</option>
@@ -23,12 +23,12 @@
                     <option>25</option>
                 </x-element.select.dropdown>
             @endif
-        </div>
-        <div class="flex flex-row gap-1">
+        </div> --}}
+        <div class="flex flex-row gap-1 w-full justify-end">
             @if (!empty($export))
                 <x-element.dropdown.container>
                     <x-slot:trigger>
-                        <x-element.button.primary>
+                        <x-element.button.primary class="rounded-md">
                             <x-heroicon-o-cloud-arrow-down width="16" height="16" />
                             &nbsp;Export
                         </x-element.button.primary>
@@ -46,7 +46,7 @@
             @if (!empty($import))
                 <x-element.dropdown.container>
                     <x-slot:trigger>
-                        <x-element.button.primary>
+                        <x-element.button.primary class="rounded-md">
                             <x-heroicon-o-cloud-arrow-down width="16" height="16" />
                             &nbsp;Import
                         </x-element.button.primary>
@@ -79,14 +79,16 @@
                     <table class="min-w-full text-sm font-light text-left">
                         <thead class="font-bold border-t-2 border-b-2 border-gray-200">
                             <tr>
-                                <th scope="col" class="px-6 py-4">#</th>
+                                <th scope="col" class="px-6 py-4">No.</th>
                                 @foreach ($cols as $col)
                                     <th scope="col"
                                         class="@if (isset($col['sort'])) cursor-pointer @endif px-6 py-4"
-                                        @if (isset($col['sort'])) wire:click="sort('{{ $col['query'] }}')" @endif>
+                                        {{-- @if (isset($col['sort'])) wire:click="sort('{{ $col['query'] }}')" @endif> --}}
                                         <div class="flex items-center gap-3">
                                             <span>{{ __($col['label']) }}</span>
-                                            <span>
+
+                                            {{-- Untuk sort --}}
+                                            {{-- <span>
                                                 @if (isset($col['sort']) && !is_null($col['sort']))
                                                     @if ($sort_by == $col['query'])
                                                         @if ($sort_direction == 'asc')
@@ -105,7 +107,7 @@
                                                         <x-heroicon-s-chevron-down width="16" />
                                                     @endif
                                                 @endif
-                                            </span>
+                                            </span> --}}
                                         </div>
                                     </th>
                                 @endforeach
@@ -114,8 +116,8 @@
                         </thead>
                         <tbody>
                             @foreach ($rows as $key => $row)
-                                <tr class="border-b" wire:key="{{ $key }}">
-                                    <td class="px-6 py-4 font-medium whitespace-nowrap">
+                                <tr class="border-b odd:bg-slate-200/75" wire:key="{{ $key }}">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold first:bg-slate-400/45">
                                         @if ($rows instanceof \Illuminate\Pagination\LengthAwarePaginator)
                                             {{ ($rows->currentPage() - 1) * $rows->perpage() + $loop->iteration }}
                                         @else
@@ -160,10 +162,11 @@
                                                 @if (isset($modals['edit']))
                                                     <x-element.button.flat wire:offline.attr="disabled"
                                                         wire:loading.attr="disabled"
-                                                        class="p-1 bg-blue-600 rounded-none disabled:bg-blue-400 text-white"
+                                                        class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-blue-700 bg-slate-700 rounded-l-lg disabled:bg-slate-400 text-white hover:bg-blue-700"
                                                         wire:click="$dispatch('modal:{{ $modals['edit'] }}:load', {id: {{ $row['id'] }}})">
                                                         <x-heroicon-s-pencil width="16"
                                                             class="pointer-events-none" />
+                                                        <span>Edit</span>
                                                     </x-element.button.flat>
                                                 @elseif(isset($url['edit']))
                                                     @php($edit_url = $url['edit'])
@@ -182,8 +185,9 @@
                                             @if (isset($permissions['delete']) && $permissions['delete'])
                                                 <x-element.button.flat wire:offline.attr="disabled"
                                                     x-on:click="$dispatch('ask', {message: 'Are You Sure want to delete {{ $row['name'] }}?', dispatch: 'delete', id: {{ $row['id'] }} })"
-                                                    class="p-1 bg-red-700 rounded-none disabled:bg-red-500 text-white">
+                                                    class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-red-700 hover:bg-red-700 rounded-r-lg disabled:bg-slate-400 hover:text-white text-slate-700 bg-white">
                                                     <x-heroicon-s-trash width="16" class="pointer-events-none" />
+                                                    <span>Delete</span>
                                                 </x-element.button.flat>
                                             @endif
                                         </div>
@@ -191,41 +195,6 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tfoot class="font-bold border-t-2 border-b-2 border-gray-200">
-                            <tr>
-                                <th scope="col" class="px-6 py-4">#</th>
-                                @foreach ($cols as $col)
-                                    <th scope="col"
-                                        class="@if (isset($col['sort'])) cursor-pointer @endif px-6 py-4"
-                                        @if (isset($col['sort'])) wire:click="sort('{{ $col['query'] }}')" @endif>
-                                        <div class="flex items-center gap-3">
-                                            <span>{{ __($col['label']) }}</span>
-                                            <span>
-                                                @if (isset($col['sort']))
-                                                    @if ($sort_by == $col['query'])
-                                                        @if ($sort_direction == 'asc')
-                                                            <x-heroicon-s-chevron-up width="16" />
-                                                            <x-heroicon-s-chevron-down
-                                                                class="text-gray-200"
-                                                                width="16" />
-                                                        @elseif($sort_direction == 'desc')
-                                                            <x-heroicon-s-chevron-up
-                                                                class="text-gray-200"
-                                                                width="16" />
-                                                            <x-heroicon-s-chevron-down width="16" />
-                                                        @endif
-                                                    @else
-                                                        <x-heroicon-s-chevron-up width="16" />
-                                                        <x-heroicon-s-chevron-down width="16" />
-                                                    @endif
-                                                @endif
-                                            </span>
-                                        </div>
-                                    </th>
-                                @endforeach
-                                <th scope="col" class="px-6 py-4"></th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>

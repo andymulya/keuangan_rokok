@@ -1,4 +1,4 @@
-@props(['disabled' => false, 'required' => false])
+@props(['disabled' => false, 'required' => false, 'style' => ''])
 
 @php($name = $attributes->wire('model')->value ?? $attributes->get('name'))
 @php($id = $attributes->wire('model')->value ?? $attributes->get('id'))
@@ -10,5 +10,5 @@
         'name' => $name,
         'id' => $id,
         'class' =>
-            'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',
+            'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm ' . $style,
     ]) }} />
