@@ -79,7 +79,7 @@
                     <table class="min-w-full text-sm font-light text-left">
                         <thead class="font-bold border-t-2 border-b-2 border-gray-200">
                             <tr>
-                                <th scope="col" class="px-6 py-4">No.</th>
+                                <th scope="col" class="px-6 py-4 text-center">No.</th>
                                 @foreach ($cols as $col)
                                     <th scope="col"
                                         class="@if (isset($col['sort'])) cursor-pointer @endif px-6 py-4"
@@ -117,7 +117,7 @@
                         <tbody>
                             @foreach ($rows as $key => $row)
                                 <tr class="border-b odd:bg-slate-200/75" wire:key="{{ $key }}">
-                                    <td class="px-6 py-4 whitespace-nowrap font-bold first:bg-slate-400/45">
+                                    <td class="px-6 py-4 whitespace-nowrap font-bold first:bg-slate-400/45 text-center">
                                         @if ($rows instanceof \Illuminate\Pagination\LengthAwarePaginator)
                                             {{ ($rows->currentPage() - 1) * $rows->perpage() + $loop->iteration }}
                                         @else

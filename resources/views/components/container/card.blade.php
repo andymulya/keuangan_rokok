@@ -12,7 +12,7 @@
                 <h2 class="text-2xl font-bold">{{ __($title) }}</h2>
                 <div class="flex gap-1">
                     @if (isset($search))
-                        <x-element.input.line wire:model.live="search" style="rounded-full" placeholder="Search..." />
+                        <x-element.input.line wire:model.live="search" styles="rounded-full" placeholder="Search..." />
                     @endif
 
                     @if ($permission && isset($modal))

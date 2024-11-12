@@ -1,4 +1,4 @@
-<x-container.modal maxWidth="sm" :name="$this->modal_name" :title="$this->title" method="save">
+<x-container.modal :name="$this->modal_name" :title="$this->title" method="save">
 
     <x-element.layout.vertical name="form.name" label="Name">
         <x-element.input.line wire:model="form.name" />

@@ -1,4 +1,4 @@
-<x-container.modal maxWidth="md" :name="$this->modal_name" :title="$this->title" method="save">
+<x-container.modal :name="$this->modal_name" :title="$this->title" method="save">
     @foreach ($this->information as $info)
         @switch($info->type)
             @case('text')
@@ -6,7 +6,7 @@
                     <x-element.input.line wire:model="profile.{{ $info->id }}" />
                 </x-element.layout.vertical>
             @break
-            
+
             @case('date')
                 <x-element.layout.vertical name="profile.{{ $info->id }}" :label="$info->name">
                     <x-element.input.line type="date" wire:model="profile.{{ $info->id }}" />
