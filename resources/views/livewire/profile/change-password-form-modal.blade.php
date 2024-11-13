@@ -1,4 +1,4 @@
-<x-container.modal maxWidth="sm" :name="$this->modal_name" :title="$this->title" method="save">
+<x-container.modal :name="$this->modal_name" :title="$this->title" method="save">
 
     <x-element.layout.vertical name="current_password" label="Password">
         <x-element.input.line type="password" wire:model="current_password" />

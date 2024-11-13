@@ -1,20 +1,9 @@
 @props([
     'name' => 'modal',
-    'maxWidth' => '2xl',
     'title' => 'Header',
     'method' => null,
 ])
 
-@php
-    $maxWidth =
-        [
-            'sm' => 'sm:max-w-sm',
-            'md' => 'sm:max-w-md',
-            'lg' => 'sm:max-w-lg',
-            'xl' => 'sm:max-w-xl',
-            '2xl' => 'sm:max-w-2xl',
-        ][$maxWidth] ?? 'sm:max-w-2xl';
-@endphp
 
 <div class="fixed inset-0 z-20 flex items-center justify-center" x-data="{ visible: false, name: '{{ $name }}' }"
     x-on:open-modal.window="($event.detail.id && name === $event.detail.name) ? $wire.load($event.detail.id) : visible = (name === $event.detail.name)"
@@ -23,7 +12,7 @@
     <div wire:loading.class="pointer-events-none" class="fixed inset-0 bg-gray-100 opacity-80"
         x-on:click="$dispatch('close-modal', {name: name})"></div>
     <div
-        class="{{ $maxWidth }} bg-white max-h-[34rem] rounded text-black relative">
+        class="bg-white max-h-[34rem] max-w-xl w-full rounded-lg text-black relative">
         @if (isset($method))
             <form wire:submit="{{ $method }}">
         @endif
