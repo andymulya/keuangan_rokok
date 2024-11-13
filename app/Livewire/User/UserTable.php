@@ -40,7 +40,7 @@ class UserTable extends BaseTable
 
     public function render()
     {
-        return view("livewire.user.user-table", $this->getData());
+        return view("user.user-table", $this->getData());
     }
 
     #[Computed]

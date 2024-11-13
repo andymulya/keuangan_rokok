@@ -28,7 +28,7 @@ class OperatorTable extends BaseTable
 
     public function render()
     {
-        return view('livewire.operator.operator-table', $this->getData());
+        return view('operator.operator-table', $this->getData());
     }
 
     #[Computed]

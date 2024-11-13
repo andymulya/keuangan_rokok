@@ -40,7 +40,7 @@ class UpdateUserFormModal extends BaseModal
 
     public function render()
     {
-        return view("livewire.user.update-user-form-modal");
+        return view("user.update-user-form-modal");
     }
 
     public function load($id)

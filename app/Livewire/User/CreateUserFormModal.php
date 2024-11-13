@@ -9,7 +9,7 @@ use App\Livewire\Module\Trait\Notification;
 class CreateUserFormModal extends BaseModal
 {
     use Notification;
-    
+
     public CreateUserForm $form;
 
     /*
@@ -40,7 +40,7 @@ class CreateUserFormModal extends BaseModal
 
     public function render()
     {
-        return view("livewire.user.create-user-form-modal");
+        return view("user.create-user-form-modal");
     }
 
     public function save()

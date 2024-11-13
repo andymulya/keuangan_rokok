@@ -42,7 +42,7 @@ class OperatorFormModal extends BaseModal
 
     public function render()
     {
-        return view('livewire.operator.operator-form-modal');
+        return view('operator.operator-form-modal');
     }
 
     #[Computed(persist: true)]

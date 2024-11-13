@@ -42,7 +42,7 @@ class RoleFormModal extends BaseModal
 
     public function render()
     {
-        return view("livewire.role.role-form-modal");
+        return view("role.role-form-modal");
     }
 
     #[Computed(persist: true)]

@@ -31,7 +31,7 @@ class ScheduleFormModal extends BaseModal
     }
     public function render()
     {
-        return view('livewire.schedule.schedule-form-modal');
+        return view('schedule.schedule-form-modal');
     }
 
     #[Computed(persist: true)]

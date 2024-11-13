@@ -9,6 +9,6 @@ class ScheduleButton extends Component
 
     public function render()
     {
-        return view('livewire.schedule.schedule-button');
+        return view('schedule.schedule-button');
     }
 }

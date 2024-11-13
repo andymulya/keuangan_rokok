@@ -28,7 +28,7 @@ class RoleTable extends BaseTable
 
     public function render()
     {
-        return view("livewire.role.role-table", $this->getData());
+        return view("role.role-table", $this->getData());
     }
 
     #[Computed]
