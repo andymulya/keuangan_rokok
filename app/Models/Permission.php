@@ -72,6 +72,13 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN],
                 ],
             ],
+
+            "schedule" => [
+                "create" => [
+                    "description" => "Dapat absen",
+                    "role" => [Role::ADMIN],
+                ],
+            ],
         ];
     }
 }

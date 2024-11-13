@@ -94,6 +94,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(HasilInputOperator::class);
     }
 
+    public function schedule()
+    {
+        return $this->belongsToMany(Schedule::class);
+    }
+
     #################################################################
     #####                   Model Scopes                        #####
     #################################################################

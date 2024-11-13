@@ -7,7 +7,8 @@
 
     <div class="py-12">
         <x-container.card>
-            {{ __("You're logged in!") }}
+
+            <livewire:schedule.schedule-button />
         </x-container.card>
     </div>
 </x-layouts.app>
