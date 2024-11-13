@@ -89,6 +89,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Faculty::class, 'faculty_administrators', 'user_id');
     }
 
+    public function operator()
+    {
+        return $this->belongsToMany(HasilInputOperator::class);
+    }
+
     #################################################################
     #####                   Model Scopes                        #####
     #################################################################

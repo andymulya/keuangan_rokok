@@ -23,15 +23,15 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN],
                 ],
                 "create" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat membuat data user",
                     "role" => [Role::ADMIN],
                 ],
                 "edit" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat mengedit data user",
                     "role" => [Role::ADMIN],
                 ],
                 "delete" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat menghapus data user",
                     "role" => [Role::ADMIN],
                 ],
             ],
@@ -41,15 +41,34 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN],
                 ],
                 "create" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat membuat data role",
                     "role" => [Role::ADMIN],
                 ],
                 "edit" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat mengedit data role",
                     "role" => [Role::ADMIN],
                 ],
                 "delete" => [
-                    "description" => "Dapat mengakses data role",
+                    "description" => "Dapat menghapus data role",
+                    "role" => [Role::ADMIN],
+                ],
+            ],
+
+            "operator" => [
+                "index" => [
+                    "description" => "Dapat mengakses data operator",
+                    "role" => [Role::ADMIN],
+                ],
+                "create" => [
+                    "description" => "Dapat membuat data operator",
+                    "role" => [Role::ADMIN],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data operator",
+                    "role" => [Role::ADMIN],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data operator",
                     "role" => [Role::ADMIN],
                 ],
             ],

@@ -25,6 +25,11 @@
                             {{ __('Roles') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+                    @can('operator index')
+                        <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
+                            {{ __('Operator') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -94,6 +99,11 @@
             <x-layouts.partials.responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
                 {{ __('Roles') }}
             </x-layouts.partials.responsive-nav-link>
+            @can('operator index')
+                <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
+                    {{ __('Operator') }}
+                </x-layouts.partials.nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->

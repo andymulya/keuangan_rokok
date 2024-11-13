@@ -31,4 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles', \App\Livewire\Role\RoleTable::class)->can('role index')->name('role.index');
 });
 
+Route::middleware('auth')->group(function() {
+    Route::get('/operators', \App\Livewire\Operator\OperatorTable::class)->name('operator.index');
+});
+
 require __DIR__ . '/auth.php';

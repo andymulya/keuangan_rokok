@@ -1,4 +1,4 @@
-@props(['disabled' => false, 'required' => false, 'styles' => 'rounded-lg'])
+@props(['disabled' => false, 'required' => false, 'type' => null, 'styles' => 'rounded-lg'])
 
 @php($name = $attributes->wire('model')->value ?? $attributes->get('name'))
 @php($id = $attributes->wire('model')->value ?? $attributes->get('id'))
@@ -7,6 +7,7 @@
     {{ $attributes->merge([
         'disabled' => $disabled,
         'required' => $required,
+        'type' => $type,
         'name' => $name,
         'id' => $id,
         'class' =>
