@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\HasilInputOperator;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class UserExport implements
+class OperatorExport implements
 FromCollection,
 WithEvents,
 WithColumnFormatting,
@@ -34,15 +34,16 @@ WithHeadings
     public function collection(): Collection
     {
         $i = 1;
-        return User::all();
+        return HasilInputOperator::all();
     }
 
     public function map($row): array
     {
         return [
             $row->id,
-            $row->name,
-            $row->email,
+            $row->lb_black,
+            $row->bat,
+            $row->pem,
         ];
     }
 
@@ -60,8 +61,9 @@ WithHeadings
     {
         return [
             'No',
-            'Name',
-            'Email',
+            'LB Black',
+            'BAT',
+            'PEM'
         ];
     }
 }

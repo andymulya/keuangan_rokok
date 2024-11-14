@@ -7,6 +7,9 @@ use App\Livewire\Module\Trait\Notification;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Computed;
 use App\Models\HasilInputOperator;
+use App\Exports\OperatorExport;
+use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel as FacadesExcel;
 
 class OperatorTable extends BaseTable
 {
@@ -24,6 +27,11 @@ class OperatorTable extends BaseTable
     protected array $modals = [
         'create' => 'operator-form-modal',
         'edit' => 'operator-form-modal',
+    ];
+
+    protected array $export = [
+        'pdf' => 'exportPDF',
+        'xlsx' => 'exportXLSX',
     ];
 
     public function render()
@@ -66,6 +74,24 @@ class OperatorTable extends BaseTable
         HasilInputOperator::destroy($id);
         $this->toast(
             message: "Role Removed",
+        );
+    }
+
+    public function exportXLSX()
+    {
+        return FacadesExcel::download(
+            new OperatorExport(),
+            "download.xlsx",
+            Excel::XLSX
+        );
+    }
+
+    public function exportPDF()
+    {
+        return FacadesExcel::download(
+            new OperatorExport(),
+            "download.pdf",
+            Excel::DOMPDF
         );
     }
 }

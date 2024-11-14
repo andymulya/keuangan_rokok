@@ -7,8 +7,9 @@
 
     <div class="py-12">
         <x-container.card>
-
-            <livewire:schedule.schedule-button />
+            @if(auth()->user()->roles[0]->name == App\Models\Role::OPERATOR)
+                <livewire:schedule.schedule-button />
+            @endif
         </x-container.card>
     </div>
 </x-layouts.app>

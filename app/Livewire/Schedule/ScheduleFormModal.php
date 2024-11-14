@@ -50,13 +50,6 @@ class ScheduleFormModal extends BaseModal
     public function save()
     {
 
-        if($this->form->getScheduleDateNowUser()){
-            return $this->toast(
-                message: "Anda telah absen hari ini",
-                type: 'error'
-            );
-        }
-
         parent::save();
         if($this->form->post()) {
             $this->dispatch('close-modal', name: $this->modal_name);
