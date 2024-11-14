@@ -28,11 +28,10 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/users', \App\Livewire\User\UserTable::class)->can('user index')->name('user.index');
-    Route::get('/roles', \App\Livewire\Role\RoleTable::class)->can('role index')->name('role.index');
-});
 
-Route::middleware('auth')->group(function() {
-    Route::get('/operators', \App\Livewire\Operator\OperatorTable::class)->name('operator.index');
+    Route::get('/roles', \App\Livewire\Role\RoleTable::class)->can('role index')->name('role.index');
+
+    Route::get('/operators', \App\Livewire\Operator\OperatorTable::class)->can('operator index')->name('operator.index');
 });
 
 require __DIR__ . '/auth.php';
