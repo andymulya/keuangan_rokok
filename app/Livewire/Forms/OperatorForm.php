@@ -59,7 +59,7 @@ class OperatorForm extends Form
         $this->schedule_id = 0;
         $this->lb_black = 0.00;
         $this->bat = 0.00;
-        $this->pem = 0.00;
+        $this->pem = "";
     }
 
     public function post()
