@@ -65,6 +65,17 @@ class OperatorTable extends BaseTable
                 "query" => "pem",
                 "sort" => true,
             ],
+            [
+                "label" => "Operator Name",
+                "query" => "user.name",
+                "sort" => true,
+            ],
+            [
+                "label" => "Created At",
+                "query" => "schedule.date",
+                "sort" => true,
+            ],
+
         ];
     }
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 /**
@@ -92,6 +93,11 @@ function roleCheck($user, $role)
 {
     if (is_null($user)) return false;
     return $user->hasRole($role);
+}
+
+function getDateNow()
+{
+    return Carbon::now()->setTimeZone('Asia/Jakarta')->format('Y-m-d');
 }
 
 function checkFileType(string $path, string $type): bool

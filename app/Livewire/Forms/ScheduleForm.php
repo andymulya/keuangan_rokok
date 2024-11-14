@@ -54,14 +54,6 @@ class ScheduleForm extends Form
         $this->absen = false;
     }
 
-    public static function getScheduleDateNowUser()
-    {
-        foreach (Schedule::getScheduleDateNow() as $scheduleNow) {
-
-            if($scheduleNow->user->id == auth()->id()) return $scheduleNow;
-        }
-    }
-
     public function post()
     {
         $this->validate();

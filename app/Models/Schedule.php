@@ -28,10 +28,17 @@ class Schedule extends Model
         return $query->orWhere("shift", "like", "%{$search}%")->orWhere("absen", "like", "%{$search}%");
     }
 
-    public static function getScheduleDateNow()
+    public static function getScheduleDateNowCollection()
     {
-        $dateNow = Carbon::now()->setTimeZone('Asia/Jakarta')->format('Y-m-d');
 
-        return Schedule::where("date", "=", $dateNow)->get();
+        return Schedule::where("date", "=", getDateNow())->get();
+    }
+
+    public static function getScheduleDateNowUser()
+    {
+        foreach (self::getScheduleDateNowCollection() as $scheduleNow) {
+
+            if($scheduleNow->user->id == auth()->id()) return $scheduleNow;
+        }
     }
 }

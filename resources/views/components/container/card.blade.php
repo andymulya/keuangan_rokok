@@ -16,10 +16,21 @@
                     @endif
 
                     @if ($permission && isset($modal))
-                        <x-element.button.primary class="rounded-full"
-                            x-on:click="$dispatch('open-modal', {name: '{{ $modal }}'})">
-                            <x-heroicon-s-plus width="16" />
-                        </x-element.button.primary>
+                        @if (App\Models\Schedule::getScheduleDateNowUser())
+                            @if (auth()->user()->roles->first()->name == App\Models\Role::OPERATOR && App\Models\Schedule::getScheduleDateNowUser()->date == getDateNow())
+                                <x-element.button.primary class="rounded-full"
+                                    x-on:click="$dispatch('open-modal', {name: '{{ $modal }}'})">
+                                    <x-heroicon-s-plus width="16" />
+                                </x-element.button.primary>
+                            @endif
+                        @endif
+
+                        @if (auth()->user()->roles->first()->name != App\Models\Role::OPERATOR && auth()->user()->roles->first()->name != App\Models\Role::ADMIN)
+                            <x-element.button.primary class="rounded-full"
+                                x-on:click="$dispatch('open-modal', {name: '{{ $modal }}'})">
+                                <x-heroicon-s-plus width="16" />
+                            </x-element.button.primary>
+                        @endif
                     @endif
                 </div>
             </div>

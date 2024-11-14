@@ -160,14 +160,29 @@
 
                                             @if (isset($permissions['edit']) && $permissions['edit'])
                                                 @if (isset($modals['edit']))
-                                                    <x-element.button.flat wire:offline.attr="disabled"
-                                                        wire:loading.attr="disabled"
-                                                        class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-blue-700 bg-slate-700 rounded-l-lg disabled:bg-slate-400 text-white hover:bg-blue-700"
-                                                        wire:click="$dispatch('modal:{{ $modals['edit'] }}:load', {id: {{ $row['id'] }}})">
-                                                        <x-heroicon-s-pencil width="16"
-                                                            class="pointer-events-none" />
-                                                        <span>Edit</span>
-                                                    </x-element.button.flat>
+                                                    @if (App\Models\Schedule::getScheduleDateNowUser())
+                                                        @if (auth()->user()->roles->first()->name == App\Models\Role::OPERATOR && App\Models\Schedule::getScheduleDateNowUser()->date == getDateNow())
+                                                            <x-element.button.flat wire:offline.attr="disabled"
+                                                                wire:loading.attr="disabled"
+                                                                class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-blue-700 bg-slate-700 rounded-l-lg disabled:bg-slate-400 text-white hover:bg-blue-700"
+                                                                wire:click="$dispatch('modal:{{ $modals['edit'] }}:load', {id: {{ $row['id'] }}})">
+                                                                <x-heroicon-s-pencil width="16"
+                                                                    class="pointer-events-none" />
+                                                                <span>Edit</span>
+                                                            </x-element.button.flat>
+                                                        @endif
+                                                    @endif
+
+                                                    @if (auth()->user()->roles->first()->name != App\Models\Role::OPERATOR)
+                                                        <x-element.button.flat wire:offline.attr="disabled"
+                                                            wire:loading.attr="disabled"
+                                                            class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-blue-700 bg-slate-700 rounded-l-lg disabled:bg-slate-400 text-white hover:bg-blue-700"
+                                                            wire:click="$dispatch('modal:{{ $modals['edit'] }}:load', {id: {{ $row['id'] }}})">
+                                                            <x-heroicon-s-pencil width="16"
+                                                                class="pointer-events-none" />
+                                                            <span>Edit</span>
+                                                        </x-element.button.flat>
+                                                    @endif
                                                 @elseif(isset($url['edit']))
                                                     @php($edit_url = $url['edit'])
                                                     @php($edit_route = $url['edit']['route'])
@@ -183,12 +198,25 @@
                                                 @endif
                                             @endif
                                             @if (isset($permissions['delete']) && $permissions['delete'])
-                                                <x-element.button.flat wire:offline.attr="disabled"
-                                                    x-on:click="$dispatch('ask', {message: 'Are You Sure want to delete ?', dispatch: 'delete', id: {{ $row['id'] }} })"
-                                                    class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-red-700 hover:bg-red-700 rounded-r-lg disabled:bg-slate-400 hover:text-white text-slate-700 bg-white">
-                                                    <x-heroicon-s-trash width="16" class="pointer-events-none" />
-                                                    <span>Delete</span>
-                                                </x-element.button.flat>
+                                                @if (App\Models\Schedule::getScheduleDateNowUser())
+                                                    @if (auth()->user()->roles->first()->name == App\Models\Role::OPERATOR && App\Models\Schedule::getScheduleDateNowUser()->date == getDateNow())
+                                                        <x-element.button.flat wire:offline.attr="disabled"
+                                                            x-on:click="$dispatch('ask', {message: 'Are You Sure want to delete ?', dispatch: 'delete', id: {{ $row['id'] }} })"
+                                                            class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-red-700 hover:bg-red-700 rounded-r-lg disabled:bg-slate-400 hover:text-white text-slate-700 bg-white">
+                                                            <x-heroicon-s-trash width="16" class="pointer-events-none" />
+                                                            <span>Delete</span>
+                                                        </x-element.button.flat>
+                                                    @endif
+                                                @endif
+
+                                                @if (auth()->user()->roles->first()->name != App\Models\Role::OPERATOR)
+                                                    <x-element.button.flat wire:offline.attr="disabled"
+                                                        x-on:click="$dispatch('ask', {message: 'Are You Sure want to delete ?', dispatch: 'delete', id: {{ $row['id'] }} })"
+                                                        class="p-1 flex items-center gap-1 border-2 border-slate-700 hover:border-red-700 hover:bg-red-700 rounded-r-lg disabled:bg-slate-400 hover:text-white text-slate-700 bg-white">
+                                                        <x-heroicon-s-trash width="16" class="pointer-events-none" />
+                                                        <span>Delete</span>
+                                                    </x-element.button.flat>
+                                                @endif
                                             @endif
                                         </div>
                                     </td>

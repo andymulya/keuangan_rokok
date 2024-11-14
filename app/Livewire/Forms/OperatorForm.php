@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\HasilInputOperator;
+use App\Models\Schedule;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -65,10 +66,11 @@ class OperatorForm extends Form
     public function post()
     {
         $this->validate();
+        $item = HasilInputOperator::find($this->id);
 
         return HasilInputOperator::updateOrCreate(['id' => $this->id], [
-            "user_id" => auth()->id(),
-            "schedule_id" => ScheduleForm::getScheduleDateNowUser()->id,
+            "user_id" => ($this->id != 0) ? $item->user_id : auth()->id() ,
+            "schedule_id" => ($this->id != 0) ? $item->schedule_id : Schedule::getScheduleDateNowUser()->id,
             "lb_black" => $this->lb_black,
             "bat" => $this->bat,
             "pem" => $this->pem
