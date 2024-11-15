@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('stok_name');
             $table->foreignId('data_pembelian_barang_id')->constrained();
+            $table->string('jumlah');
             $table->bigInteger('harga_satuan');
             $table->bigInteger('harga_total');
             $table->timestamps();
