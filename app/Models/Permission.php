@@ -57,19 +57,19 @@ class Permission extends \Spatie\Permission\Models\Permission
             "operator" => [
                 "index" => [
                     "description" => "Dapat mengakses data operator",
-                    "role" => [Role::ADMIN],
+                    "role" => [Role::ADMIN, Role::OPERATOR],
                 ],
                 "create" => [
                     "description" => "Dapat membuat data operator",
-                    "role" => [Role::ADMIN],
+                    "role" => [Role::OPERATOR],
                 ],
                 "edit" => [
                     "description" => "Dapat mengedit data operator",
-                    "role" => [Role::ADMIN],
+                    "role" => [Role::ADMIN, Role::OPERATOR],
                 ],
                 "delete" => [
                     "description" => "Dapat menghapus data operator",
-                    "role" => [Role::ADMIN],
+                    "role" => [Role::ADMIN, Role::OPERATOR],
                 ],
             ],
 
@@ -88,6 +88,25 @@ class Permission extends \Spatie\Permission\Models\Permission
                 ],
                 "delete" => [
                     "description" => "Dapat menghapus data schedule",
+                    "role" => [Role::ADMIN],
+                ],
+            ],
+
+            "shift" => [
+                "index" => [
+                    "description" => "Dapat mengakses data shift",
+                    "role" => [Role::ADMIN],
+                ],
+                "create" => [
+                    "description" => "Dapat membuat data shift",
+                    "role" => [Role::ADMIN],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data shift",
+                    "role" => [Role::ADMIN],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data shift",
                     "role" => [Role::ADMIN],
                 ],
             ],

@@ -43,8 +43,28 @@ class ScheduleTable extends BaseTable
     {
         return [
             [
+                "label" => "Nama",
+                "query" => "user.name",
+                "sort" => true,
+            ],
+            [
+                "label" => "Shift",
+                "query" => "shift.nama_shift",
+                "sort" => true,
+            ],
+            [
                 "label" => "Date",
                 "query" => "date",
+                "sort" => true,
+            ],
+            [
+                "label" => "Start",
+                "query" => "shift.start",
+                "sort" => true,
+            ],
+            [
+                "label" => "End",
+                "query" => "shift.end",
                 "sort" => true,
             ],
         ];

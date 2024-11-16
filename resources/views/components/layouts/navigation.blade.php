@@ -36,6 +36,12 @@
                             {{ __('Schedule') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+
+                    @can('shift index')
+                        <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
+                            {{ __('Shift') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -64,7 +70,7 @@
 
                             <x-element.dropdown.link :href="route('logout')"
                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-element.dropdown.link>
                         </form>
@@ -108,6 +114,11 @@
             @can('schedule index')
                 <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
                     {{ __('Schedule') }}
+                </x-layouts.partials.nav-link>
+            @endcan
+            @can('shift index')
+                <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
+                    {{ __('Shift') }}
                 </x-layouts.partials.nav-link>
             @endcan
         </div>

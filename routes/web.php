@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/operators', \App\Livewire\Operator\OperatorTable::class)->can('operator index')->name('operator.index');
 
     Route::get('/schedule', \App\Livewire\Schedule\ScheduleTable::class)->can('schedule index')->name('schedule.index');
+
+    Route::get('/shift', \App\Livewire\Shift\ShiftTable::class)->can('shift index')->name('shift.index');
 });
 
 require __DIR__ . '/auth.php';

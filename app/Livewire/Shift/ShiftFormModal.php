@@ -1,48 +1,49 @@
 <?php
 
-namespace App\Livewire\Schedule;
+namespace App\Livewire\Shift;
 
-use App\Livewire\Forms\ScheduleForm;
+use App\Livewire\Forms\ShiftForm;
 use App\Livewire\Module\BaseModal;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\Permission;
 use App\Models\Schedule;
 use Livewire\Attributes\Computed;
 
-class ScheduleFormModal extends BaseModal
+class ShiftFormModal extends BaseModal
 {
     use Notification;
 
-    public ScheduleForm $form;
+    public ShiftForm $form;
 
     /*
      * normal modal title
      * @var string
      */
-    protected static $title = "Add New Schedule";
+    protected static $title = "Add New Shift";
 
     /*
      * load modal title
      * @var string
      */
-    protected static $load_title = "Update Schedule";
+    protected static $load_title = "Update Shift";
 
     /*
      * save or load permission
      * @var string|bool
      */
     protected $permission = [
-        'load' => 'schedule edit',
-        'save' => 'schedule create'
+        'load' => 'shift edit',
+        'save' => 'shift create'
     ];
 
     public function mount()
     {
         $this->clear();
     }
+
     public function render()
     {
-        return view('schedule.schedule-form-modal');
+        return view('shift.shift-form-modal');
     }
 
     #[Computed(persist: true)]
@@ -60,13 +61,12 @@ class ScheduleFormModal extends BaseModal
 
     public function save()
     {
-
         parent::save();
         if($this->form->post()) {
             $this->dispatch('close-modal', name: $this->modal_name);
-            $this->dispatch('schedule-table:reload');
+            $this->dispatch('shift-table:reload');
             $this->toast(
-                message: $this->form->id == 0 ? 'Schedule Created' : 'Schedule Updated',
+                message: $this->form->id == 0 ? 'Shift Created' : 'Shift Updated',
                 type: 'success'
             );
         }

@@ -1,4 +1,4 @@
-<x-container.modal name="schedule-form-modal" :title="$this->title" method="save">
+<x-container.modal :name="$this->modal_name" :title="$this->title" method="save">
 
     <!-- Dropdown User -->
     <div class="flex flex-col">
@@ -6,7 +6,9 @@
             <x-element.select.dropdown required=true wire:model="form.user_id">
                 <option value="{{ null }}">-- Pilih User --</option>
                 @foreach (App\Models\User::all() as $user)
-                    <option value="{{$user['id']}}">{{ $user["name"] }}</option>
+                    @if ($user->roles->first()->name == App\Models\Role::OPERATOR)
+                        <option value="{{$user['id']}}">{{ $user["name"] }}</option>
+                    @endif
                 @endforeach
             </x-element.select.dropdown>
         </x-element.layout.vertical>

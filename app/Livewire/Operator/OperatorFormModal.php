@@ -6,6 +6,8 @@ use App\Livewire\Forms\OperatorForm;
 use App\Livewire\Module\BaseModal;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\Permission;
+use App\Models\Schedule;
+use App\Models\Role;
 use Livewire\Attributes\Computed;
 
 class OperatorFormModal extends BaseModal
@@ -59,16 +61,34 @@ class OperatorFormModal extends BaseModal
 
     public function save()
     {
-
-        parent::save();
-        if($this->form->post()) {
-            $this->dispatch('close-modal', name: $this->modal_name);
-            $this->dispatch('operator-table:reload');
-            $this->toast(
-                message: $this->form->id == 0 ? 'Item Created' : 'Item Updated',
-                type: 'success'
-            );
+        if(auth()->user()->roles->first()->name == Role::ADMIN && $this->form->id != 0){
+            parent::save();
+            if($this->form->post()) {
+                $this->dispatch('close-modal', name: $this->modal_name);
+                $this->dispatch('operator-table:reload');
+                return $this->toast(
+                    message: $this->form->id == 0 ? 'Item Created' : 'Item Updated',
+                    type: 'success'
+                );
+            }
         }
+
+        if(Schedule::getScheduleDateNowUser() && auth()->user()->roles->first()->name == Role::OPERATOR){
+            parent::save();
+            if($this->form->post()) {
+                $this->dispatch('close-modal', name: $this->modal_name);
+                $this->dispatch('operator-table:reload');
+                return $this->toast(
+                    message: $this->form->id == 0 ? 'Item Created' : 'Item Updated',
+                    type: 'success'
+                );
+            }
+        }
+
+        return $this->toast(
+            message: "Shift anda belum saat ini",
+            type: 'error'
+        );
     }
 
     public function clear()
