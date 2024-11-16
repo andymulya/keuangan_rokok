@@ -25,7 +25,7 @@
                             @endif
                         @endif
 
-                        @if (auth()->user()->roles->first()->name != App\Models\Role::OPERATOR && auth()->user()->roles->first()->name != App\Models\Role::ADMIN)
+                        @if (auth()->user()->roles->first()->name != App\Models\Role::OPERATOR)
                             <x-element.button.primary class="rounded-full"
                                 x-on:click="$dispatch('open-modal', {name: '{{ $modal }}'})">
                                 <x-heroicon-s-plus width="16" />
