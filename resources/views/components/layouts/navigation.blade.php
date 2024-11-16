@@ -100,16 +100,15 @@
             <x-layouts.partials.responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-layouts.partials.responsive-nav-link>
-            <x-layouts.partials.responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
-                {{ __('Users') }}
-            </x-layouts.partials.responsive-nav-link>
-            <x-layouts.partials.responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
-                {{ __('Roles') }}
-            </x-layouts.partials.responsive-nav-link>
-            @can('operator index')
-                <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
-                    {{ __('Operator') }}
-                </x-layouts.partials.nav-link>
+            @can('user index')
+                <x-layouts.partials.responsive-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                    {{ __('Users') }}
+                </x-layouts.partials.responsive-nav-link>
+            @endcan
+            @can('role index')
+                <x-layouts.partials.responsive-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
+                    {{ __('Roles') }}
+                </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('schedule index')
                 <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
@@ -119,6 +118,11 @@
             @can('shift index')
                 <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
                     {{ __('Shift') }}
+                </x-layouts.partials.nav-link>
+            @endcan
+            @can('operator index')
+                <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
+                    {{ __('Operator') }}
                 </x-layouts.partials.nav-link>
             @endcan
         </div>
