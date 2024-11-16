@@ -20,6 +20,11 @@ class Schedule extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function shift()
+    {
+        return $this->belongsTo(Shift::class);
+    }
+
     #################################################################
     #####                   Model Scopes                        #####
     #################################################################
@@ -38,7 +43,7 @@ class Schedule extends Model
     {
         foreach (self::getScheduleDateNowCollection() as $scheduleNow) {
 
-            if($scheduleNow->user->id == auth()->id()) return $scheduleNow;
+            if ($scheduleNow->user->id == auth()->id()) return $scheduleNow;
         }
     }
 }

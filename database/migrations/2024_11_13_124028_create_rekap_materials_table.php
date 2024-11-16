@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('rekap_materials', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->string('tipe_material');
+            $table->string('tipe_rekap');
+            $table->string('nama_material');
             $table->decimal('persediaan', 10, 2)->default(0);
             $table->decimal('pemakaian', 10, 2)->default(0);
             $table->decimal('sisa', 10, 2)->default(0);
