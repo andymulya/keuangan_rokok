@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained();
             $table->decimal('lb_black', 8, 2)->default(0);
             $table->decimal('bat', 8, 2)->default(0);
+            $table->decimal('tsg', 8, 2)->default(0);
             $table->string('pem')->nullable();
             $table->timestamps();
         });
