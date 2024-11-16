@@ -74,8 +74,20 @@ class Permission extends \Spatie\Permission\Models\Permission
             ],
 
             "schedule" => [
+                "index" => [
+                    "description" => "Dapat mengakses data schedule",
+                    "role" => [Role::ADMIN],
+                ],
                 "create" => [
-                    "description" => "Dapat absen",
+                    "description" => "Dapat membuat data schedule",
+                    "role" => [Role::ADMIN],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data schedule",
+                    "role" => [Role::ADMIN],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data schedule",
                     "role" => [Role::ADMIN],
                 ],
             ],

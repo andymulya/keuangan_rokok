@@ -30,6 +30,12 @@
                             {{ __('Operator') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+
+                    @can('schedule index')
+                        <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
+                            {{ __('Schedule') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -53,11 +59,6 @@
                     </x-slot:trigger>
 
                     <x-slot:content>
-                        {{-- <x-element.dropdown.link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-element.dropdown.link> --}}
-
-                        <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -104,6 +105,11 @@
                     {{ __('Operator') }}
                 </x-layouts.partials.nav-link>
             @endcan
+            @can('schedule index')
+                <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
+                    {{ __('Schedule') }}
+                </x-layouts.partials.nav-link>
+            @endcan
         </div>
 
         <!-- Responsive Settings Options -->
@@ -114,11 +120,6 @@
             </div>
 
             <div class="mt-3 space-y-1">
-                {{-- <x-layouts.partials.responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-layouts.partials.responsive-nav-link> --}}
-
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/roles', \App\Livewire\Role\RoleTable::class)->can('role index')->name('role.index');
 
     Route::get('/operators', \App\Livewire\Operator\OperatorTable::class)->can('operator index')->name('operator.index');
+
+    Route::get('/schedule', \App\Livewire\Schedule\ScheduleTable::class)->can('schedule index')->name('schedule.index');
 });
 
 require __DIR__ . '/auth.php';

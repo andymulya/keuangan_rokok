@@ -19,9 +19,20 @@ class ScheduleFormModal extends BaseModal
      * normal modal title
      * @var string
      */
-    protected static $title = "Absensi";
+    protected static $title = "Add New Schedule";
 
+    /*
+     * load modal title
+     * @var string
+     */
+    protected static $load_title = "Update Schedule";
+
+    /*
+     * save or load permission
+     * @var string|bool
+     */
     protected $permission = [
+        'load' => 'schedule edit',
         'save' => 'schedule create'
     ];
 

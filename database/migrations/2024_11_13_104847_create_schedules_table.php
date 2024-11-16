@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->foreignId('shift_id')->constrained();
             $table->date('date');
-            // $table->boolean('absen');
             $table->timestamps();
         });
     }

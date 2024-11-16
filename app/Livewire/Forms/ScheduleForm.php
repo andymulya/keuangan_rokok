@@ -16,42 +16,36 @@ class ScheduleForm extends Form
     public $user_id;
 
     #[Validate]
-    public $shift;
+    public $shift_id;
 
     #[Validate]
     public $date;
-
-    #[Validate]
-    public $absen;
 
     public function rules()
     {
         return [
             'user_id' => ['required'],
-            'shift' => ['required'],
+            'shift_id' => ['required'],
             'date' => ['required'],
-            'absen' => ['required'],
         ];
     }
 
     public function load(int $id)
     {
-        $item = Schedule::find($id);
+        $schedule = Schedule::find($id);
 
-        $this->id = $item->id;
-        $this->user_id = $item->user_id;
-        $this->shift = $item->schedule_id;
-        $this->date = $item->lb_black;
-        $this->absen = $item->bat;
+        $this->id = $schedule->id;
+        $this->user_id = $schedule->user_id;
+        $this->shift_id = $schedule->shift_id;
+        $this->date = $schedule->date;
     }
 
     public function clear()
     {
         $this->id = 0;
         $this->user_id = 0;
-        $this->shift = "";
+        $this->shift_id = 0;
         $this->date = null;
-        $this->absen = false;
     }
 
     public function post()
@@ -59,10 +53,9 @@ class ScheduleForm extends Form
         $this->validate();
 
         return Schedule::updateOrCreate(['id' => $this->id], [
-            "user_id" => auth()->id(),
-            "shift" => $this->shift,
-            "date" => $this->date,
-            "absen" => $this->absen
+            "user_id" => $this->user_id,
+            "shift_id" => $this->shift_id,
+            "date" => $this->date
         ]);
     }
 }

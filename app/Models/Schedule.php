@@ -10,7 +10,7 @@ class Schedule extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["user_id", "shift", "date", "absen"];
+    protected $fillable = ["user_id", "shift_id", "date"];
 
     #################################################################
     #####                      Relations                        #####
@@ -30,7 +30,7 @@ class Schedule extends Model
     #################################################################
     public function scopeSearch($query, $search)
     {
-        return $query->orWhere("shift", "like", "%{$search}%")->orWhere("absen", "like", "%{$search}%");
+        return $query->orWhere("date", "like", "%{$search}%");
     }
 
     public static function getScheduleDateNowCollection()
