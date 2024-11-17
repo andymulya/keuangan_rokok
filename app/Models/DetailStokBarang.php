@@ -11,6 +11,8 @@ class DetailStokBarang extends Model
 
     protected $guarded = ['id'];
 
+    protected $fillable = ["stok_name", "data_pembelian_barang_id", "jumlah", "harga_satuan", "harga_total"];
+
     public function data_pembelian_barang()
     {
         return $this->belongsTo(DataPembelianBarang::class);
