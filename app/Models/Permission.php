@@ -128,6 +128,24 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN, Role::ADMIN_STOK],
                 ],
             ],
+            "data-pembelian" => [
+                "index" => [
+                    "description" => "Dapat mengakses data data-pembelian",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "create" => [
+                    "description" => "Dapat membuat data data-pembelian",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data data-pembelian",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data data-pembelian",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+            ],
         ];
     }
 }

@@ -45,6 +45,11 @@
                             {{ __('Rekap Material') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+                    @can('data-pembelian index')
+                        <x-layouts.partials.nav-link :href="route('data-pembelian.index')" :active="request()->routeIs('data-pembelian.index')">
+                            {{ __('Data Pembelian') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -131,6 +136,11 @@
             @can('rekap-material index')
                 <x-layouts.partials.nav-link :href="route('rekap-material.index')" :active="request()->routeIs('rekap-material.index')">
                     {{ __('Rekap Material') }}
+                </x-layouts.partials.nav-link>
+            @endcan
+            @can('data-pembelian index')
+                <x-layouts.partials.nav-link :href="route('data-pembelian.index')" :active="request()->routeIs('data-pembelian.index')">
+                    {{ __('Data Pembelian') }}
                 </x-layouts.partials.nav-link>
             @endcan
         </div>

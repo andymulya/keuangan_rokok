@@ -43,7 +43,7 @@ class OperatorTable extends BaseTable
     public function rows()
     {
         return HasilInputOperator::search($this->search)
-            ->orderBy($this->sort_by, $this->sort_direction)
+            // ->orderBy($this->sort_by, $this->sort_direction)
             ->paginate($this->perPage);
     }
 

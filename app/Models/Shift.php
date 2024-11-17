@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shift extends Model
 {
     use HasFactory;
-
+    protected $guarded = ['id'];
     protected $fillable = ["nama_shift", "start", "end"];
 
 

@@ -9,6 +9,7 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     protected $fillable = ["user_id", "shift_id", "date"];
 
     #################################################################

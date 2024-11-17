@@ -9,6 +9,7 @@ class HasilInputOperator extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
     protected $fillable = ["user_id", "schedule_id", "lb_black", "bat", "pem", "tsg"];
 
     #################################################################

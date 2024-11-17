@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/shift', \App\Livewire\Shift\ShiftTable::class)->can('shift index')->name('shift.index');
 
     Route::get('/rekap-material', \App\Livewire\RekapMaterial\RekapMaterialTable::class)->can('rekap-material index')->name('rekap-material.index');
+
+    Route::get('/data-pembelian', \App\Livewire\DataPembelian\DataPembelianTable::class)->can('data-pembelian index')->name('data-pembelian.index');
 });
 
 require __DIR__ . '/auth.php';
