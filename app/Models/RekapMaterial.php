@@ -17,9 +17,9 @@ class RekapMaterial extends Model
     #################################################################
     #####                   Model Scopes                        #####
     #################################################################
-    public function scopeSearch($query, $search)
+    public function scopeSearch($query, $search, $tipe)
     {
-        return $query->orWhere("nama_material", "like", "%{$search}%");
+        return $query->where("tipe_rekap", "=", "{$tipe}")->where("nama_material", "like", "%{$search}%");
     }
 
 }

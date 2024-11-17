@@ -12,7 +12,6 @@
                 @endforeach
             </x-element.select.dropdown>
         </x-element.layout.vertical>
-
     </div>
 
     <!-- Dropdown Shift -->

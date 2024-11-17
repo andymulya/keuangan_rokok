@@ -14,6 +14,7 @@ class RekapMaterialTable extends BaseTable
 
     #[Locked]
     public $title = "Rekap Material Table";
+    public $tipe_rekap_selected = "reguler";
 
     protected array $permissions = [
         'create' => 'rekap-material create',
@@ -34,8 +35,8 @@ class RekapMaterialTable extends BaseTable
     #[Computed]
     public function rows()
     {
-        return RekapMaterial::search($this->search)
-            ->orderBy($this->sort_by, $this->sort_direction)
+        return RekapMaterial::search($this->search, $this->tipe_rekap_selected)
+            // ->orderBy($this->sort_by, $this->sort_direction)
             ->paginate($this->perPage);
     }
 
@@ -75,6 +76,11 @@ class RekapMaterialTable extends BaseTable
             [
                 "label" => "Total",
                 "query" => "total",
+                "sort" => true,
+            ],
+            [
+                "label" => "Tipe Rekap",
+                "query" => "tipe_rekap",
                 "sort" => true,
             ],
         ];
