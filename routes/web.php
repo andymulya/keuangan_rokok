@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/schedule', \App\Livewire\Schedule\ScheduleTable::class)->can('schedule index')->name('schedule.index');
 
     Route::get('/shift', \App\Livewire\Shift\ShiftTable::class)->can('shift index')->name('shift.index');
+
+    Route::get('/rekap-material', \App\Livewire\RekapMaterial\RekapMaterialTable::class)->can('rekap-material index')->name('rekap-material.index');
 });
 
 require __DIR__ . '/auth.php';

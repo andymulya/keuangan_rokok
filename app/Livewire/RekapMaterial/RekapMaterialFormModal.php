@@ -1,47 +1,49 @@
 <?php
 
-namespace App\Livewire\Schedule;
+namespace App\Livewire\RekapMaterial;
 
-use App\Livewire\Forms\ScheduleForm;
+
+use App\Livewire\Forms\RekapMaterialForm;
 use App\Livewire\Module\BaseModal;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\Permission;
 use Livewire\Attributes\Computed;
 
-class ScheduleFormModal extends BaseModal
+class RekapMaterialFormModal extends BaseModal
 {
     use Notification;
 
-    public ScheduleForm $form;
+    public RekapMaterialForm $form;
 
     /*
      * normal modal title
      * @var string
      */
-    protected static $title = "Add New Schedule";
+    protected static $title = "Add New Rekap Material";
 
     /*
      * load modal title
      * @var string
      */
-    protected static $load_title = "Update Schedule";
+    protected static $load_title = "Update Rekap Material";
 
     /*
      * save or load permission
      * @var string|bool
      */
     protected $permission = [
-        'load' => 'schedule edit',
-        'save' => 'schedule create'
+        'load' => 'rekap-material edit',
+        'save' => 'rekap-material create'
     ];
 
     public function mount()
     {
         $this->clear();
     }
+
     public function render()
     {
-        return view('schedule.schedule-form-modal');
+        return view('rekap-material.rekap-material-form-modal');
     }
 
     #[Computed(persist: true)]
@@ -56,16 +58,14 @@ class ScheduleFormModal extends BaseModal
         $this->form->load($id);
     }
 
-
     public function save()
     {
-
         parent::save();
         if($this->form->post()) {
             $this->dispatch('close-modal', name: $this->modal_name);
-            $this->dispatch('schedule-table:reload');
+            $this->dispatch('rekap-material-table:reload');
             $this->toast(
-                message: $this->form->id == 0 ? 'Schedule Created' : 'Schedule Updated',
+                message: $this->form->id == 0 ? 'Rekap Material Created' : 'Rekap Material Updated',
                 type: 'success'
             );
         }

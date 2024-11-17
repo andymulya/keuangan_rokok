@@ -40,6 +40,11 @@
                             {{ __('Operator') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+                    @can('rekap-material index')
+                        <x-layouts.partials.nav-link :href="route('rekap-material.index')" :active="request()->routeIs('rekap-material.index')">
+                            {{ __('Rekap Material') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -121,6 +126,11 @@
             @can('operator index')
                 <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
                     {{ __('Operator') }}
+                </x-layouts.partials.nav-link>
+            @endcan
+            @can('rekap-material index')
+                <x-layouts.partials.nav-link :href="route('rekap-material.index')" :active="request()->routeIs('rekap-material.index')">
+                    {{ __('Rekap Material') }}
                 </x-layouts.partials.nav-link>
             @endcan
         </div>

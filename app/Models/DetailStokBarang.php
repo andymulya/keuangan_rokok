@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class detail_stok_barang extends Model
+class DetailStokBarang extends Model
 {
     use HasFactory;
 
@@ -13,6 +13,6 @@ class detail_stok_barang extends Model
 
     public function data_pembelian_barang()
     {
-        return $this->belongsTo(data_pembelian_barang::class);
+        return $this->belongsTo(DataPembelianBarang::class);
     }
 }
