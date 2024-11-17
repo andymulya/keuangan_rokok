@@ -73,7 +73,7 @@ class OperatorFormModal extends BaseModal
             }
         }
 
-        if(Schedule::getScheduleDateNowUser() && auth()->user()->roles->first()->name == Role::OPERATOR){
+        if(Schedule::getScheduleDateNowUser()->date == getDateNow() && auth()->user()->roles->first()->name == Role::OPERATOR){
             parent::save();
             if($this->form->post()) {
                 $this->dispatch('close-modal', name: $this->modal_name);

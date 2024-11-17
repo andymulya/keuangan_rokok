@@ -100,6 +100,11 @@ function getDateNow()
     return Carbon::now()->setTimeZone('Asia/Jakarta')->format('Y-m-d');
 }
 
+function getTimeNow()
+{
+    return Carbon::now()->setTimeZone('Asia/Jakarta')->format('H:i:s');
+}
+
 function checkFileType(string $path, string $type): bool
 {
     if ((file_exists($path) && is_string($path) && $path != "")) {

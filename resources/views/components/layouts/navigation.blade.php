@@ -25,21 +25,19 @@
                             {{ __('Roles') }}
                         </x-layouts.partials.nav-link>
                     @endcan
-                    @can('operator index')
-                        <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
-                            {{ __('Operator') }}
-                        </x-layouts.partials.nav-link>
-                    @endcan
-
                     @can('schedule index')
-                        <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
+                    <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
                             {{ __('Schedule') }}
                         </x-layouts.partials.nav-link>
                     @endcan
-
                     @can('shift index')
-                        <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
-                            {{ __('Shift') }}
+                    <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
+                        {{ __('Shift') }}
+                    </x-layouts.partials.nav-link>
+                    @endcan
+                    @can('operator index')
+                        <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
+                            {{ __('Operator') }}
                         </x-layouts.partials.nav-link>
                     @endcan
                 </div>

@@ -36,7 +36,7 @@ class Schedule extends Model
     public static function getScheduleDateNowCollection()
     {
 
-        return Schedule::where("date", "=", getDateNow())->get();
+        return self::where("date", "=", getDateNow())->get();
     }
 
     public static function getScheduleDateNowUser()
