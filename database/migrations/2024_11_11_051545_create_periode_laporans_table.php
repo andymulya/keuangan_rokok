@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_operasionals', function (Blueprint $table) {
+        Schema::create('periode_laporans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('periode_laporan')->constrained('periode_laporans')->cascadeOnDelete();
-            $table->string('tipe_data_operasional')->default('');
-            $table->date('date');
-            $table->enum('tipe', ['pemasukan', 'pengeluaran']);
+            $table->string('nama_periode');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_operasionals');
+        Schema::dropIfExists('periode_laporans');
     }
 };
