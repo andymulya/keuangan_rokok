@@ -4,7 +4,7 @@
         <x-element.input.line type="date" wire:model="form.date" required=true />
     </x-element.layout.vertical>
     <x-element.layout.vertical name="form.tipe_pembelian" label="Tipe Pembelian">
-        <x-element.input.line wire:model="form.tipe_pembelian" />
+        <x-element.input.line required=true wire:model="form.tipe_pembelian" />
     </x-element.layout.vertical>
 
     <x-slot:button>

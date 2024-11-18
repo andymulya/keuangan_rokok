@@ -48,7 +48,7 @@ class DataPembelianForm extends Form
 
         return DataPembelianBarang::updateOrCreate(['id' => $this->id], [
             "date" => $this->date,
-            "tipe_pembelian" => $this->tipe_pembelian,
+            "tipe_pembelian" => strtolower($this->tipe_pembelian),
         ]);
     }
 }

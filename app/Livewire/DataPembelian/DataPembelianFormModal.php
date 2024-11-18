@@ -6,6 +6,7 @@ use App\Livewire\Forms\DataPembelianForm;
 use App\Livewire\Module\BaseModal;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\Permission;
+use App\Models\DataPembelianBarang;
 use Livewire\Attributes\Computed;
 
 class DataPembelianFormModal extends BaseModal
@@ -59,15 +60,24 @@ class DataPembelianFormModal extends BaseModal
 
     public function save()
     {
-        parent::save();
-        if($this->form->post()) {
-            $this->dispatch('close-modal', name: $this->modal_name);
-            $this->dispatch('data-pembelian-table:reload');
-            $this->toast(
-                message: $this->form->id == 0 ? 'Data Pembelian Material Created' : 'Data Pembelian Material Updated',
-                type: 'success'
-            );
+        $data = DataPembelianBarang::getDataPembelian($this->form->date, $this->form->tipe_pembelian);
+
+        if(!$data){
+            parent::save();
+            if($this->form->post()) {
+                $this->dispatch('close-modal', name: $this->modal_name);
+                $this->dispatch('data-pembelian-table:reload');
+                return $this->toast(
+                    message: $this->form->id == 0 ? 'Data Pembelian Material Created' : 'Data Pembelian Material Updated',
+                    type: 'success'
+                );
+            }
         }
+
+        return $this->toast(
+            message: "Maaf data yang anda masukkan telah tersedia",
+            type: 'error'
+        );
     }
 
     public function clear()

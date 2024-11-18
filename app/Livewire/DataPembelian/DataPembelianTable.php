@@ -15,6 +15,9 @@ class DataPembelianTable extends BaseTable
     #[Locked]
     public $title = "Data Pembelian Barang Table";
 
+    public $tipe_data_selected = "reguler";
+    public $data_date;
+
     protected array $permissions = [
         'create' => 'data-pembelian create',
         'edit' => 'data-pembelian edit',
@@ -34,8 +37,8 @@ class DataPembelianTable extends BaseTable
     #[Computed]
     public function rows()
     {
-        return DataPembelianBarang::search($this->search)
-            ->orderBy($this->sort_by, $this->sort_direction)
+        return DataPembelianBarang::search($this->search, $this->data_date, $this->tipe_data_selected)
+            // ->orderBy($this->sort_by, $this->sort_direction)
             ->paginate($this->perPage);
     }
 
