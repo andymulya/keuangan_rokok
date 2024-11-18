@@ -146,6 +146,24 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN, Role::ADMIN_STOK],
                 ],
             ],
+            "detail-stok" => [
+                "index" => [
+                    "description" => "Dapat mengakses data detail-stok",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "create" => [
+                    "description" => "Dapat membuat data detail-stok",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data detail-stok",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data detail-stok",
+                    "role" => [Role::ADMIN, Role::ADMIN_STOK],
+                ],
+            ],
         ];
     }
 }
