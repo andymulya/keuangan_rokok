@@ -9,6 +9,9 @@
     <x-element.layout.vertical name="form.pem" label="PEM">
         <x-element.input.line required="true" wire:model="form.pem" />
     </x-element.layout.vertical>
+    <x-element.layout.vertical name="form.tsg" label="Tsg">
+        <x-element.input.line type="number" step="0.01" required="true" min=0 wire:model="form.tsg" />
+    </x-element.layout.vertical>
 
     <x-slot:button>
         <x-element.button.primary wire:loading.attr="disabled" class="rounded-lg" type="submit">Save</x-element.button.primary>

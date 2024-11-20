@@ -6,6 +6,7 @@ use App\Livewire\Forms\DetailStokBarangForm;
 use App\Livewire\Module\BaseModal;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\Permission;
+use App\Models\DataPembelianBarang;
 use Livewire\Attributes\Computed;
 
 class DetailStokBarangFormModal extends BaseModal

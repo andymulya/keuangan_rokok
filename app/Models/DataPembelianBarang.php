@@ -26,4 +26,8 @@ class DataPembelianBarang extends Model
     {
         return self::where("date", "=", $date)->where("tipe_pembelian", "like", "%{$type}%")->first();
     }
+
+    public static function getDataWithType($type){
+        return self::where("tipe_pembelian", "like", "%{$type}%")->get();
+    }
 }

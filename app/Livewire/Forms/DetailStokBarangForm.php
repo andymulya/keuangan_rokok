@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\DetailStokBarang;
+use App\Models\DataPembelianBarang;
 use Livewire\Attributes\Locked;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -26,6 +27,12 @@ class DetailStokBarangForm extends Form
 
     #[Validate]
     public $harga_total;
+
+    #[Validate]
+    public $date;
+
+    #[Validate]
+    public $type = "reguler";
 
     public function rules()
     {
@@ -55,7 +62,7 @@ class DetailStokBarangForm extends Form
         $this->id = 0;
         $this->stok_name = "";
         $this->data_pembelian_barang_id = 0;
-        $this->jumlah = "";
+        $this->jumlah = 0;
         $this->harga_satuan = 0;
         $this->harga_total = 0;
     }
@@ -63,10 +70,11 @@ class DetailStokBarangForm extends Form
     public function post()
     {
         $this->validate();
+        $data = DataPembelianBarang::getDataPembelian($this->date, $this->type);
 
         return DetailStokBarang::updateOrCreate(['id' => $this->id], [
             "stok_name" => $this->stok_name,
-            "data_pembelian_barang_id" => $this->data_pembelian_barang_id,
+            "data_pembelian_barang_id" => $data->id,
             "jumlah" => $this->jumlah,
             "harga_satuan" => $this->harga_satuan,
             "harga_total" => $this->jumlah * $this->harga_satuan,

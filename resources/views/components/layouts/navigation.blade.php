@@ -50,6 +50,11 @@
                             {{ __('Data Pembelian') }}
                         </x-layouts.partials.nav-link>
                     @endcan
+                    @can('detail-stok index')
+                        <x-layouts.partials.nav-link :href="route('detail-stok.index')" :active="request()->routeIs('detail-stok.index')">
+                            {{ __('Detail Stok') }}
+                        </x-layouts.partials.nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -119,29 +124,34 @@
                 </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('schedule index')
-                <x-layouts.partials.nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
+                <x-layouts.partials.responsive-nav-link :href="route('schedule.index')" :active="request()->routeIs('schedule.index')">
                     {{ __('Schedule') }}
-                </x-layouts.partials.nav-link>
+                </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('shift index')
-                <x-layouts.partials.nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
+                <x-layouts.partials.responsive-nav-link :href="route('shift.index')" :active="request()->routeIs('shift.index')">
                     {{ __('Shift') }}
-                </x-layouts.partials.nav-link>
+                </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('operator index')
-                <x-layouts.partials.nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
+                <x-layouts.partials.responsive-nav-link :href="route('operator.index')" :active="request()->routeIs('operator.index')">
                     {{ __('Operator') }}
-                </x-layouts.partials.nav-link>
+                </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('rekap-material index')
-                <x-layouts.partials.nav-link :href="route('rekap-material.index')" :active="request()->routeIs('rekap-material.index')">
+                <x-layouts.partials.responsive-nav-link :href="route('rekap-material.index')" :active="request()->routeIs('rekap-material.index')">
                     {{ __('Rekap Material') }}
-                </x-layouts.partials.nav-link>
+                </x-layouts.partials.responsive-nav-link>
             @endcan
             @can('data-pembelian index')
-                <x-layouts.partials.nav-link :href="route('data-pembelian.index')" :active="request()->routeIs('data-pembelian.index')">
+                <x-layouts.partials.responsive-nav-link :href="route('data-pembelian.index')" :active="request()->routeIs('data-pembelian.index')">
                     {{ __('Data Pembelian') }}
-                </x-layouts.partials.nav-link>
+                </x-layouts.partials.responsive-nav-link>
+            @endcan
+            @can('detail-stok index')
+                <x-layouts.partials.responsive-nav-link :href="route('detail-stok.index')" :active="request()->routeIs('detail-stok.index')">
+                    {{ __('Detail Stok') }}
+                </x-layouts.partials.responsive-nav-link>
             @endcan
         </div>
 

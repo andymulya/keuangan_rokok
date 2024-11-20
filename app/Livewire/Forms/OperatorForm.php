@@ -25,9 +25,11 @@ class OperatorForm extends Form
     #[Validate]
     public $bat;
 
-
     #[Validate]
     public $pem;
+
+    #[Validate]
+    public $tsg;
 
 
     public function rules()
@@ -38,6 +40,7 @@ class OperatorForm extends Form
             'lb_black' => ['required'],
             'bat' => ['required'],
             'pem' => ['required'],
+            'tsg' => ['required'],
         ];
     }
 
@@ -51,6 +54,7 @@ class OperatorForm extends Form
         $this->lb_black = $item->lb_black;
         $this->bat = $item->bat;
         $this->pem = $item->pem;
+        $this->tsg = $item->tsg;
     }
 
     public function clear()
@@ -61,6 +65,7 @@ class OperatorForm extends Form
         $this->lb_black = 0.00;
         $this->bat = 0.00;
         $this->pem = "";
+        $this->tsg = 0.00;
     }
 
     public function post()
@@ -73,7 +78,8 @@ class OperatorForm extends Form
             "schedule_id" => ($this->id != 0) ? $item->schedule_id : Schedule::getScheduleDateNowUser()->id,
             "lb_black" => $this->lb_black,
             "bat" => $this->bat,
-            "pem" => $this->pem
+            "pem" => $this->pem,
+            "tsg" => $this->tsg
         ]);
     }
 }

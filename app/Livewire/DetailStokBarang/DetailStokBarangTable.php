@@ -5,15 +5,18 @@ namespace App\Livewire\DetailStokBarang;
 use App\Livewire\Module\BaseTable;
 use App\Livewire\Module\Trait\Notification;
 use App\Models\DetailStokBarang;
+use App\Livewire\Forms\DetailStokBarangForm;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Locked;
 
 class DetailStokBarangTable extends BaseTable
 {
     use Notification;
+    public DetailStokBarangForm $form;
 
     #[Locked]
     public $title = "Detail Stok Barang Table";
+
 
     protected array $permissions = [
         'create' => 'detail-stok create',
