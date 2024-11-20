@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PeriodeLaporan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/data-pembelian', \App\Livewire\DataPembelian\DataPembelianTable::class)->can('data-pembelian index')->name('data-pembelian.index');
 
     Route::get('/detail-stok', \App\Livewire\DetailStokBarang\DetailStokBarangTable::class)->can('detail-stok index')->name('detail-stok.index');
+
+    Route::get('/periode-laporan', [PeriodeLaporan::class, 'index'])->can('periode-laporan index')->name('periode-laporan.index');
+    Route::delete('/periode-laporan', [PeriodeLaporan::class, 'destroy'])->can('periode-laporan delete');
+    Route::post('/periode-laporan', [PeriodeLaporan::class, 'create'])->can('periode-laporan create');
+    Route::put('/periode-laporan', [PeriodeLaporan::class, 'update'])->can('periode-laporan edit');
 });
 
 require __DIR__ . '/auth.php';
