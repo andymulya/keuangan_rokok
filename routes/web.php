@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/detail-stok', \App\Livewire\DetailStokBarang\DetailStokBarangTable::class)->can('detail-stok index')->name('detail-stok.index');
 
+    // Periode Laporan
     Route::get('/periode-laporan', [PeriodeLaporan::class, 'index'])->can('periode-laporan index')->name('periode-laporan.index');
     Route::delete('/periode-laporan', [PeriodeLaporan::class, 'destroy'])->can('periode-laporan delete');
     Route::post('/periode-laporan', [PeriodeLaporan::class, 'create'])->can('periode-laporan create');
