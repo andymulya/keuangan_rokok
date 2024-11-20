@@ -164,6 +164,25 @@ class Permission extends \Spatie\Permission\Models\Permission
                     "role" => [Role::ADMIN, Role::ADMIN_STOK],
                 ],
             ],
+
+            "periode-laporan" => [
+                "index" => [
+                    "description" => "Dapat mengakses data periode-laporan",
+                    "role" => [Role::ADMIN],
+                ],
+                "create" => [
+                    "description" => "Dapat membuat data periode-laporan",
+                    "role" => [Role::ADMIN],
+                ],
+                "edit" => [
+                    "description" => "Dapat mengedit data periode-laporan",
+                    "role" => [Role::ADMIN],
+                ],
+                "delete" => [
+                    "description" => "Dapat menghapus data periode-laporan",
+                    "role" => [Role::ADMIN],
+                ],
+            ],
         ];
     }
 }

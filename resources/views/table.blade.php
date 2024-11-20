@@ -129,6 +129,16 @@
         background-color: white !important;
         box-shadow: none;
       }
+
+      .dt-paging-button.page-item.active {
+        background-color: white !important;
+        box-shadow: none;
+      }
+
+      .dt-paging-button.page-item.active>.page-link {
+        background-color: slategray !important;
+        box-shadow: none;
+      }
     </style>
 
 
@@ -228,16 +238,31 @@
                 <?php } else { ?>
                 <?php if (isset($modal_title['edit'])) { ?>
 
-                <button type="button" class="btn btn-warning btn-simple p-2" data-bs-toggle="modal"
+                <button type="button" class="btn btn-secondary btn-simple p-2" data-bs-toggle="modal"
                   data-bs-target="#modal-edit<?= $data['id'] ?>">
-                  Edit
+                  <span class="d-flex justify-content-center gap-2">
+                    <x-heroicon-s-pencil width="16" class="pointer-events-none" />
+                    {{-- <x-heroicon-s-trash width="16" /> --}}
+                    Edit
+                  </span>
                 </button>
+
+                {{-- <button type="button"
+                  class="transition text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  data-bs-toggle="modal" data-bs-target="#modal-edit<?= $data['id'] ?>">
+                  <x-heroicon-s-trash width="16" class="pointer-events-none" />
+                  <span>Edit</span>
+                </button> --}}
+
                 <?php } ?>
                 <?php } ?>
                 <?php if (isset($modal_title['delete'])) { ?>
                 <button type="button" class="btn btn-danger btn-simple p-2" data-bs-toggle="modal"
                   data-bs-target="#modal-delete<?= $data['id'] ?>">
-                  Delete
+                  <span class="d-flex justify-content-center gap-2">
+                    <x-heroicon-s-trash width="16" />
+                    Delete
+                  </span>
                 </button>
                 <?php } ?>
 
@@ -332,7 +357,7 @@
                 <div class="modal-body p-0">
                   <div class="card card-plain">
                     <div class="card-header pb-0 text-left">
-                      <h3 class="font-weight-bolder text-info text-gradient">
+                      <h3 class="font-weight-bolder">
                         <?= isset($modal_title['edit']) ? $modal_title['edit'] : '' ?></h3>
                     </div>
                     <div class="card-body">
@@ -429,9 +454,10 @@
                     <?php }
                           }
                           ?>
-                    <button type="submit" class="btn bg-gradient-primary">Delete</button>
+                    <button type="submit" class="btn bg-danger text-white">Delete</button>
                   </form>
-                  <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-sm bg-secondary text-white"
+                    data-bs-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
@@ -453,7 +479,7 @@
             <div class="card card-plain">
               <div class="card-header pb-0 text-left">
                 <?php if (isset($modal_title['tambah'])) { ?>
-                <h3 class="font-weight-bolder text-info text-gradient"><?= $modal_title['tambah'] ?></h3>
+                <h3 class="font-weight-bolder"><?= $modal_title['tambah'] ?></h3>
                 <?php } ?>
               </div>
               <div class="card-body">
